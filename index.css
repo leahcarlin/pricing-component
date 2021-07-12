@@ -1,0 +1,179 @@
+/* Instructions */
+/* When clicked, the selected card should enlarge (up to you how much) and the price should have a color of #ffd60a*/
+/* The non-selected cards should reduce in opacity */
+/* Stretch goal: add a toggle to display monthly and annual prices */
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Asap', sans-serif;
+}
+
+h1,
+.tagline {
+    text-align: center;   
+}
+
+.tagline {
+    padding-bottom: 1em;
+}
+
+.container {
+    display: flex;
+    background: #001d3d;
+    margin: 0 auto;
+    justify-content: center;
+    max-width: 1000px;
+}
+
+.card {
+    cursor: pointer;
+    color: white;
+    background-color: #003566;
+    width: 300px;
+    text-align: center;
+    margin: 1em;
+    padding: 1em 0.25em;
+    position: relative;
+}
+.container:hover > .card {
+  opacity: 0.2;
+}
+
+.container:hover > .card:hover {
+  opacity: 1.0;
+}
+.card:hover {
+  transform: scale(1.2);
+}
+
+.card:hover p {
+    color: #ffd60a;
+}
+
+.card h2 {
+    margin: 0;
+}
+
+.card ul li {
+    text-align: left;
+    padding: 0 0 1em 0.5em;
+}
+
+.card ul li:last-child {
+    padding-bottom: 5em;
+}
+
+.card-cat ul li::marker {
+    content: '🐱'
+}
+
+.card-lion ul li::marker {
+    content: '🦁'
+}
+
+.card-tiger ul li::marker {
+    content: '🐯'
+}
+
+button {
+    font-family: inherit;
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+    padding: 1em 2em;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1em;
+    background-color: #ffd60a;
+}
+
+button:hover,
+button:focus {
+    cursor: pointer;
+    background-color: white;
+}
+
+/* slider toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-top: 1rem;
+}
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch span {
+    font-size: .75em;
+    color: #003566;
+    font-weight: bold;
+}
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffd60a;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #ffd60a;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.monthly {
+    display: none;
+}
+.monthly, .yearly
+{
+  color: #003566;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+}
+input:checked+ .slider .monthly {
+    display: block;
+}
+
+input:checked+ .slider .yearly {
+    display: none;
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
